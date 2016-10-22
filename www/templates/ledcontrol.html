@@ -1,20 +1,27 @@
-<ion-view view-title="LEDControl">
-  <ion-content>
-		<div class="card card-btn positive " ng-class="{ 'active': !led.state }" ng-click="ledControl(led.state)">
-			<div class="caption" >
-				<h5>Desk</h5>
-				<h1 ng-if="led.state"> OFF </h1>
-				<h1 ng-if="!led.state"> ON </h1>
-			</div>
-			<div class="icon"><i class="icon ion-ios-lightbulb-outline"></i></div>
-		</div>
-		<div class="card card-btn positive " ng-class="{ 'active': led.state }" ng-click="ledControl(led.state)">
-			<div class="caption" >
-				<h5>Ceiling</h5>
-				<h1 ng-if="led.state"> OFF </h1>
-				<h1 ng-if="!led.state"> ON </h1>
-			</div>
-			<div class="icon"><i class="icon ion-ios-lightbulb-outline"></i></div>
-		</div>
-</ion-content>
+<ion-view view-title="Lights">
+	<ion-content>
+		<ion-list>
+			<ion-item class="item-icon-left item-toggle">
+				<i class="icon ion-ios-lightbulb-outline"></i>
+				Desk
+				<label class="toggle toggle-balanced">
+					<input type="checkbox" ng-model="led.state" ng-click="ledControl(led.state)" ng-checked="!led.state">
+					<div class="track">
+						<div class="handle"></div>
+					</div>
+			 	</label>
+			</ion-item>
+			<!--
+			<ion-item class="item-icon-left item-toggle">
+				<i class="icon ion-ios-lightbulb-outline"></i>
+				Ceil	
+				<label class="toggle toggle-balanced">
+					<input type="checkbox" ng-model="led.state" ng-click="ledControl(led.state)" ng-checked="!!led.state">
+					<div class="track">
+						<div class="handle"></div>
+					</div>
+			 	</label>
+			</ion-item></ion-list>
+			-->
+	</ion-content>
 </ion-view>

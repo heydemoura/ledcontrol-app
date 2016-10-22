@@ -15,8 +15,6 @@ $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
 
-$positive: #21234d ;
-
 
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
@@ -24,3 +22,12 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 
+$energized: #FFC968 !default;
+
+.card-btn.energized {
+	background-color: #FFC968 ;
+	color: white;
+	.caption >	h1,h5 {
+		color: black;	
+ 	}
+}
