@@ -42,32 +42,40 @@ angular.module('ledcontrol.controllers', ['ledcontrol.services'])
 })
 
 .controller('IndexCtrl', function($rootScope, $scope, ledService) {
+	$scope.relays = [
+		{
+			label: 'Desk',
+			name: 'desk',
+			state: undefined
+		},
+		{
+			label: 'Ceiling',
+			name: 'ceil',
+			state: undefined
+		}	
+	];
 
+
+	// Before entering the view
 	$scope.$on('$ionicView.beforeEnter', function() {
-		ledService.getState().then(function(response) {
-			console.log(response.data);
-			$scope.led = response.data;
-		})
-	})
-
-	var _getLedState = function() {
-		if(typeof $rootScope.led === 'undefined') {
-			ledService.getState().then(function(response) {
-				$scope.led = $rootScope.led;	
+		$scope.relays.forEach(function(element) {
+			ledService.getState(element.name).then(function(resp) {
+				element.state = resp.data.state;
+				console.log(element.label, element.state);
 			});
-		};
-	}
+		});
+	});
 
-	$scope.ledControl = function(state) {
-		if(state) {
-			ledService.turnOn();
+	
+	$scope.ledControl = function(relay) {
+		if(relay.state) {
+			ledService.turnOn(relay.name);
 		} else {
-			ledService.turnOff();
+			ledService.turnOff(relay.name);
 		}
 		$scope.led.state = !$scope.led.state;
 	}
 
-	_getLedState();
 })
 
 .controller('LedCtrl', function($scope, $stateParams, ledService) {

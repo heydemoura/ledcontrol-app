@@ -1,27 +1,16 @@
 <ion-view view-title="Lights">
 	<ion-content>
 		<ion-list>
-			<ion-item class="item-icon-left item-toggle">
+			<ion-item class="item-icon-left item-toggle" ng-repeat="relay in relays">
 				<i class="icon ion-ios-lightbulb-outline"></i>
-				Desk
+				{{relay.label}}	
 				<label class="toggle toggle-balanced">
-					<input type="checkbox" ng-model="led.state" ng-click="ledControl(led.state)" ng-checked="!led.state">
+					<input type="checkbox" ng-model="relay.state" ng-change="ledControl(relay)" ng-checked="relay.state">
 					<div class="track">
 						<div class="handle"></div>
 					</div>
 			 	</label>
 			</ion-item>
-			<!--
-			<ion-item class="item-icon-left item-toggle">
-				<i class="icon ion-ios-lightbulb-outline"></i>
-				Ceil	
-				<label class="toggle toggle-balanced">
-					<input type="checkbox" ng-model="led.state" ng-click="ledControl(led.state)" ng-checked="!!led.state">
-					<div class="track">
-						<div class="handle"></div>
-					</div>
-			 	</label>
-			</ion-item></ion-list>
-			-->
+		</ion-list>
 	</ion-content>
 </ion-view>
